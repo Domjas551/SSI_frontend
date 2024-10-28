@@ -1,7 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import {useEffect} from "react";
 
 function App() {
+
+  const getTypes= ()=>{
+    fetch("/type")
+        .then(res=>res.json())
+        .then(json => console.log(json))
+  }
+
+  const sendData= ()=>{
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: 'React Hooks POST Request Example' })
+    };
+    fetch('/post', requestOptions)
+        .then(response => response.json())
+        .then(json=>console.log(json.message));
+
+
+  }
+
+  useEffect(() => {
+    //getTypes();
+    sendData();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
