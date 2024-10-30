@@ -1,0 +1,29 @@
+/* components/Navbar.css */
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space links evenly */
+    background-color: #011f3d; /* Dark background */
+    padding: 1rem; /* Add padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.navbar a {
+    flex-grow: 1; /* Allow each link to grow and take equal space */
+    text-align: center; /* Center the text in each link */
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.25rem; /* Slightly larger font size */
+    transition: color 0.3s ease; /* Smooth transition for hover */
+    padding: 0.5rem 0; /* Padding for each link */
+}
+
+.navbar a:hover {
+    color: #61dafb; /* Light blue color on hover */
+}
+
+/* Optional: Active link styling */
+.navbar a.active {
+    border-bottom: 2px solid #61dafb; /* Active link indicator */
+    padding-bottom: 5px; /* Space for border */
+}

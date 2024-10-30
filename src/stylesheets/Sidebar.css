@@ -1,0 +1,77 @@
+/* components/Sidebar.css */
+
+.sidebar {
+    position: fixed; /* Fix the sidebar to the left of the screen */
+    top: 55%; /* Align the top to the center of the viewport */
+    left: 0; /* Align to the left */
+    width: 15vw; /* Set the width of the sidebar */
+    height: auto; /* Set a height for the sidebar */
+    transform: translateY(-50%); /* Move up half of the height of the sidebar */
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly more opaque background for better readability */
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px; /* Rounded corners */
+    padding: 1.5rem; /* Increased padding for a spacious look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+    overflow-y: auto; /* Scroll if content overflows */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for sidebar */
+.sidebar:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+.sidebar h3 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 1.5rem; /* Space below heading */
+    font-size: 1.5rem; /* Increased font size for the heading */
+    color: #011f3d; /* Darker color for better contrast */
+}
+
+.form-group {
+    margin-bottom: 1.5rem; /* Increased space between form elements */
+}
+
+label {
+    display: block; /* Make labels block elements */
+    margin-bottom: 0.5rem; /* Space below labels */
+    font-weight: bold; /* Make label text bold for emphasis */
+    color: #011f3d; /* Slightly lighter color for labels */
+}
+
+input[type="text"]{
+    width: 80%; /* Full width inputs */
+    padding: 0.5rem; /* Padding inside inputs */
+    border: 1px solid #011f3d; /* Border style */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Increased font size for inputs */
+    transition: border-color 0.3s ease; /* Smooth transition for border color on focus */
+}
+
+select
+{
+    width: 85%; /* Full width inputs */
+    padding: 0.5rem; /* Padding inside inputs */
+    border: 1px solid #011f3d; /* Border style */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Increased font size for inputs */
+    transition: border-color 0.3s ease; /* Smooth transition for border color on focus */
+}
+
+    /* Change border color on focus */
+input[type="text"]:focus,
+select:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+input[type="checkbox"] {
+    margin-left: 2rem; /* Space between checkbox and label text */
+}
+
+/* Style for checkbox labels */
+.form-group label {
+    display: flex; /* Use flex to align checkbox and label text */
+    align-items: center; /* Center the checkbox vertically with the label */
+    cursor: pointer; /* Pointer cursor for checkbox */
+}

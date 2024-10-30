@@ -1,0 +1,35 @@
+/* components/Header.css */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem; /* Add horizontal padding */
+    background-color: #011f3d; /* Dark background color */
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.home-link {
+    font-size: 2rem; /* Larger font size */
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease; /* Smooth transition for hover */
+    margin-left: 75px;
+}
+
+.home-link:hover {
+    color: #61dafb; /* Light blue color on hover */
+}
+
+.login-link {
+    font-size: 1.25rem; /* Larger font size */
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease; /* Smooth transition for hover */
+    margin-right: 75px;
+}
+
+.login-link:hover {
+    color: #61dafb; /* Light blue color on hover */
+}

@@ -1,0 +1,70 @@
+/* components/MainContentButtonChoice.css */
+.main-content {
+    position: relative;
+    margin: 30px;
+
+}
+
+.content-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-translucent background */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px; /* Optional: Limit the width of the content */
+    margin: auto; /* Center content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60vw;
+    min-height: 70vh;
+}
+
+.heading {
+    color: #011f3d; /* Dark blue color */
+    font-size: 2.5rem; /* Large font size */
+    margin-top: 50px; /* Space below the heading */
+    margin-bottom: 100px;
+    text-align: center; /* Center the heading */
+}
+
+.button-container {
+    display: grid;                    /* Use CSS Grid */
+    grid-template-columns: repeat(2, 1fr); /* Create two equal columns */
+    gap: 1rem;                       /* Space between buttons */
+    align-items: center;             /* Center buttons vertically */
+    justify-items: center;           /* Center buttons horizontally */
+}
+
+.button-container button {
+    padding: 0.75rem 1.5rem; /* Button padding */
+    font-size: 1.25rem; /* Increased font size (adjust as needed) */
+    cursor: pointer; /* Pointer cursor on hover */
+    border: none; /* Remove default border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #011f3d; /* Dark blue background color */
+    color: white; /* White text color */
+    font-weight: bold; /* Make the text bold */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Transition effects */
+    min-width: 20vw;
+    margin: 20px;
+}
+
+/* Hover effect */
+.button-container button:hover {
+    background-color: #00509E; /* Lighter blue on hover */
+    color: white; /* Dark blue text on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Focus effect */
+.button-container button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 4px rgba(0, 51, 102, 0.5); /* Add a focus ring */
+}
+
+/* Disabled state */
+.button-container button:disabled {
+    background-color: #d3d3d3; /* Gray background for disabled */
+    color: #a9a9a9; /* Gray text */
+    cursor: not-allowed; /* Not allowed cursor */
+}
