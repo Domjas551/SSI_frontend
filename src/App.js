@@ -15,11 +15,13 @@ function App() {
             .then(json => console.log(json));
     }
 
+
+    //Przykłądowa komunikacja z backendem na projekt
     const sendData = () => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'React Hooks POST Request Example' })
+            body: JSON.stringify({ title: 'React Hooks POST Request Example', value: "0" })
         };
         fetch('/post', requestOptions)
             .then(response => response.json())
@@ -30,7 +32,7 @@ function App() {
         sendData();
     }, []);
 
-    /*
+
     //Strona z przyciskami
     return (
         <div className="App">
@@ -40,7 +42,7 @@ function App() {
             <MainContent />
         </div>
     );
-*/
+/*
     //Strona do wyszukiwań
     return (
         <div className="App">
@@ -51,6 +53,7 @@ function App() {
             <ContentList />
         </div>
     );
+ */
 }
 
 export default App;
