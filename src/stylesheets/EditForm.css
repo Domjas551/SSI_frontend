@@ -1,0 +1,67 @@
+/* components/MainContentButtonChoice.css */
+.form_main-content {
+    position: relative;
+    margin: 30px;
+}
+
+.form_content-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60vw;
+    min-height: 70vh;
+}
+
+.form_heading {
+    color: #011f3d;
+    font-size: 2.5rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.form_button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_button_container button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #011f3d;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    min-width: 12vw;
+    margin: 50px 0;
+}
+
+/* Hover effect */
+.form_button_container button:hover {
+    background-color: #00509E;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Focus effect */
+.form_button_container button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 51, 102, 0.5);
+}
+
+/* Disabled state */
+.form_button_container button:disabled {
+    background-color: #d3d3d3;
+    color: #a9a9a9;
+    cursor: not-allowed;
+}
