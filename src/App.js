@@ -21,7 +21,7 @@ function App() {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'React Hooks POST Request Example', value: "0" })
+            body: JSON.stringify({ title: 'React Hooks POST Request Example', value: "1" })
         };
         fetch('/post', requestOptions)
             .then(response => response.json())
@@ -29,7 +29,7 @@ function App() {
     }
 
     useEffect(() => {
-        sendData();
+        //sendData();
     }, []);
 
 
