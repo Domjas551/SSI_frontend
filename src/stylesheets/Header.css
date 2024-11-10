@@ -1,5 +1,3 @@
-/* components/Header.css */
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -22,7 +20,8 @@
     color: #61dafb; /* Light blue color on hover */
 }
 
-.login-link {
+.login-link,
+.back-link { /* Add a new class for the back link */
     font-size: 1.25rem; /* Larger font size */
     text-decoration: none;
     color: white;
@@ -30,6 +29,7 @@
     margin-right: 75px;
 }
 
-.login-link:hover {
+.login-link:hover,
+.back-link:hover { /* Apply the same hover effect */
     color: #61dafb; /* Light blue color on hover */
 }

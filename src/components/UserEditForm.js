@@ -44,23 +44,23 @@ function UserEditForm(props) {
             <div className="form_content-container">
                 <h1 className="form_heading">Edycja danych</h1>
                 <form onSubmit={handleSubmit}>
-                    <p>Name</p>
-                    <input name="name" type="text" placeholder="Name" defaultValue={user.name} />
-                    <p>Surname</p>
-                    <input name="surname" type="text" placeholder="Surname" defaultValue={user.surname} />
-                    <p>Position</p>
+                    <p>Imię</p>
+                    <input name="name" type="text" placeholder="Imię" defaultValue={user.name} />
+                    <p>Nazwisko</p>
+                    <input name="surname" type="text" placeholder="Nazwisko" defaultValue={user.surname} />
+                    <p>Pozycja</p>
                     <select name="position" defaultValue={user.position}>
                         <option value="pracownik">Pracownik</option>
                         <option value="kierownik">Kierownik</option>
                         <option value="administrator">Administrator</option>
                     </select>
-                    <p>Is active</p>
+                    <p>Czy aktywny</p>
                     <select name="is_active" defaultValue={user.is_active}>
                         <option value={1}>Active</option>
                         <option value={0}>Unactive</option>
                     </select>
                     <div className="form_button_container">
-                        <button type="submit" className="form_button">Submit</button>
+                        <button type="submit" className="form_button">Zatwierdź</button>
                     </div>
                 </form>
             </div>

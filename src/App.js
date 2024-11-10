@@ -7,6 +7,8 @@ import MainContent from './components/MainContentButtonChoice';
 import Background from './components/Background';
 import Sidebar from './components/Sidebar';
 import ContentList from './components/ContentList'; // Import the ContentList component
+import UserEditSelect from './components/UserEditSelect';
+import UserEditSidebar from './components/UserEditSidebar';
 
 function App() {
     const getTypes = () => {
@@ -32,7 +34,14 @@ function App() {
         //sendData();
     }, []);
 
+    //Strona edycji użytkownika
+    return (
+        <div className="App">
+                <UserEditSelect />
+        </div>
+    );
 
+/*
     //Strona z przyciskami
     return (
         <div className="App">
@@ -42,6 +51,8 @@ function App() {
             <MainContent />
         </div>
     );
+
+ */
 /*
     //Strona do wyszukiwań
     return (
