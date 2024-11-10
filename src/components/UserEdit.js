@@ -32,7 +32,7 @@ function UserEdit(){
     return(
         <div className="App">
             <Background />
-            <Header />
+            <Header back={`/admin/userEdit`}/>
             { user ? console.log(user) : null }
             { user ? <UserEditForm user={user} /> : null }
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import {createBrowserRouter, RouterProvider, Link, Outlet} from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import ErrorPage from "./components/error";
 import AdminMain from "./components/Admin-main";
 import UserEditSelect from "./components/UserEditSelect";
@@ -18,7 +18,8 @@ const router=createBrowserRouter([
     {path: 'admin/userAdd', element: <AdminMain />},
     {path: 'admin/userEdit', element: <UserEditSelect />},
     {path: 'admin/taskTypeAdd', element: <AdminMain />},
-    {path: `admin/userEdit/user/*`, element: <UserEdit />}
+    {path: `admin/userEdit/user/*`, element: <UserEdit />},
+    {path: 'error', element: <ErrorPage />}
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

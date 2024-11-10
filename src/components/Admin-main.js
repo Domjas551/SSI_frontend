@@ -23,10 +23,6 @@ function AdminMain(props){
         }
     ])
 
-    useEffect(() => {
-        console.log(props.test)
-    }, []);
-
     return(
         <div className="App">
             <Background />
