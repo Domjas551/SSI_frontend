@@ -15,7 +15,22 @@ function UserEditSelect(){
     async function getUsers(){
 
         await fetch("/users")
-            .then(res => res.json())
+            .then(res => {
+
+                if(res.ok){
+                    return res.json()
+                }else{
+
+                    let message;
+
+                    if(res.statusText=="Internal Server Error"){
+                        message="Nie można połączyć się z serwerem"
+                    }
+
+                    setError(message)
+                }
+
+            })
             .then((json) => {
 
                 if(json[0].error!=null){
@@ -41,9 +56,30 @@ function UserEditSelect(){
         };
 
         await fetch("/users", requestOptions)
-            .then(res => res.json())
+            .then(res => {
+
+                if(res.ok){
+                    return res.json()
+                }else{
+
+                    let message;
+
+                    if(res.statusText=="Internal Server Error"){
+                        message="Nie można połączyć się z serwerem"
+                    }
+
+                    setError(message)
+                }
+            })
             .then((json) => {
-                setUsers(json);
+
+                if(json[0].error!=null){
+                    //obsługa błędów przesyłanych z backendu
+                    setError(json[0].error);
+                }else{
+                    setUsers(json);
+                }
+
             })
             .catch((error)=>{
                 console.log('Data fetching error.',error)
@@ -60,7 +96,7 @@ function UserEditSelect(){
         <div className="App">
             {//Blok do przenoszenia na strone z błędami
             }
-            {error? navigate('/error', {state:{error: error}}): null}
+            {error? navigate('/error', {state:{error: error}}, {replace:true}): null}
             <Background />
             <Header back={`/admin`}/>
             <UserEditSidebar  getFilteredUsers={getFilteredUsers}/>

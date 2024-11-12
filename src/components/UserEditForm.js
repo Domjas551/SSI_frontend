@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import '../stylesheets/EditForm.css';
+import {useNavigate} from "react-router-dom";
 
 function UserEditForm(props) {
+
+    const navigate=useNavigate();
+
+    const [error, setError] = useState(null);
     const [user, setUser] = useState(props.user);
 
     const handleSubmit = (event) => {
@@ -29,10 +34,30 @@ function UserEditForm(props) {
         };
 
         await fetch("/user", requestOptions)
-            .then(res => res.json())
+            .then(res => {
+                if(res.ok){
+                    return res.json()
+                }else{
+
+                    let message;
+
+                    if(res.statusText=="Internal Server Error"){
+                        message="Nie można połączyć się z serwerem"
+                    }
+
+                    setError(message)
+                }
+            })
             .then((json) => {
-                setUser(json);
-                alert("Edycja danych przebiegła pomyślnie");
+
+                if(json[0].error!=null){
+                    //obsługa błędów przesyłanych z backendu
+                    setError(json[0].error);
+                }else{
+                    setUser(json);
+                    alert("Edycja danych przebiegła pomyślnie");
+                }
+
             })
             .catch((error) => {
                 console.log('Data fetching error.', error);
@@ -41,6 +66,9 @@ function UserEditForm(props) {
 
     return (
         <main className="form_main-content">
+            {//Blok do przenoszenia na strone z błędami
+            }
+            {error? navigate('/error', {state:{error: error}}, {replace:true}): null}
             <div className="form_content-container">
                 <h1 className="form_heading">Edycja danych</h1>
                 <form onSubmit={handleSubmit}>

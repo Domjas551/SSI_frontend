@@ -2,9 +2,13 @@ import React, {useEffect, useState} from "react";
 import Background from "./Background";
 import Header from "./Header";
 import UserEditForm from "./UserEditForm";
+import {useNavigate} from "react-router-dom";
 
 function UserEdit(){
 
+    const navigate=useNavigate();
+
+    const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
 
     async function getUser(){
@@ -16,9 +20,29 @@ function UserEdit(){
         };
 
         await fetch("/user",requestOptions)
-            .then(res => res.json())
+            .then(res => {
+                if(res.ok){
+                    return res.json()
+                }else{
+
+                    let message;
+
+                    if(res.statusText=="Internal Server Error"){
+                        message="Nie można połączyć się z serwerem"
+                    }
+
+                    setError(message)
+                }
+            })
             .then((json) => {
-                setUser(json[0])
+
+                if(json[0].error!=null){
+                    //obsługa błędów przesyłanych z backendu
+                    setError(json[0].error);
+                }else{
+                    setUser(json[0]);
+                }
+
             })
             .catch((error)=>{
                 console.log('Data fetching error.',error)
@@ -31,6 +55,9 @@ function UserEdit(){
 
     return(
         <div className="App">
+            {//Blok do przenoszenia na strone z błędami
+            }
+            {error? navigate('/error', {state:{error: error}}, {replace:true}): null}
             <Background />
             <Header back={`/admin/userEdit`}/>
             { user ? console.log(user) : null }

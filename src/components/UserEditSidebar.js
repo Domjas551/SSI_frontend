@@ -81,11 +81,11 @@ function UserEditSidebar(props){
             <h3>Input Form</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="name">Imie:</label>
                     <input type="text" id="name" placeholder="Enter text..."/>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="surname">Surname:</label>
+                    <label htmlFor="surname">Nazwisko:</label>
                     <input type="text" id="surname" placeholder="Enter text..."/>
                 </div>
                 <div className="form-group">
@@ -93,7 +93,7 @@ function UserEditSidebar(props){
                     <input type="email" id="email" placeholder="Enter text..."/>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="position">Position:</label>
+                    <label htmlFor="position">Stanowisko:</label>
                     <select name="position" defaultValue="any">
                         <option value="any">Any</option>
                         <option value="pracownik">Pracownik</option>
@@ -102,11 +102,11 @@ function UserEditSidebar(props){
                     </select>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="dropdown2">Active/Unactive:</label>
+                    <label htmlFor="dropdown2">Aktywny/Nie aktywny:</label>
                     <select name="is_active" defaultValue={2}>
-                        <option value={2}>Both</option>
-                        <option value={1}>Active</option>
-                        <option value={0}>Unactive</option>
+                        <option value={2}>Oba</option>
+                        <option value={1}>Aktywny</option>
+                        <option value={0}>Nie aktywny</option>
                     </select>
                 </div>
                 <div className="form_button_container">
