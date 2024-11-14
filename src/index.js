@@ -6,8 +6,10 @@ import ErrorPage from "./components/error";
 import AdminMain from "./components/Admin-main";
 import UserEditSelect from "./components/UserEditSelect";
 import UserEdit from "./components/UserEdit";
+import TaskTypeAdd from "./components/TaskTypeAdd";
+import UserAdd from "./components/UserAdd";
 
-//element do ustalanai ścieżek stron
+//element do ustalania ścieżek stron
 const router=createBrowserRouter([
     {
         path: "/",
@@ -15,9 +17,9 @@ const router=createBrowserRouter([
         errorElement: <ErrorPage/>
     },
     {path: 'admin', element: <AdminMain />},
-    {path: 'admin/userAdd', element: <AdminMain />},
+    {path: 'admin/userAdd', element: <UserAdd />},
     {path: 'admin/userEdit', element: <UserEditSelect />},
-    {path: 'admin/taskTypeAdd', element: <AdminMain />},
+    {path: 'admin/taskTypeAdd', element: <TaskTypeAdd />},
     {path: `admin/userEdit/user/*`, element: <UserEdit />},
     {path: 'error', element: <ErrorPage />}
 ]);

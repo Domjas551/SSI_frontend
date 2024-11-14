@@ -1,45 +1,88 @@
-import React, { useState } from "react";
-import '../stylesheets/EditForm.css';
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-function UserEditForm(props) {
-
+function UserAddForm(){
     const navigate=useNavigate();
 
     const [error, setError] = useState(null);
-    const [user, setUser] = useState(props.user);
+    const [emails, setEmails] = useState(null);
+
+    async function getEmails(){
+
+        await fetch("/admin/userAdd")
+            .then(res => {
+
+                if(res.ok){
+                    return res.json()
+                }else{
+
+                    let message;
+
+                    if(res.statusText=="Internal Server Error"){
+                        message="Nie można połączyć się z serwerem"
+                    }
+
+                    setError(message)
+                }
+
+            })
+            .then((json) => {
+
+                if(json[0].error!=null){
+                    //obsługa błędów przesyłanych z backendu
+                    setError(json[0].error);
+                }else{
+
+                    let emails=[];
+
+                    for (let i = 0; i < json.length; i++) {
+                        emails.push(json[i].email)
+                    }
+
+                    setEmails(emails);
+                }
+
+            })
+            .catch((error)=>{
+                console.log('Data fetching error.',error)
+
+            });
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        updateUsers(
-            event.target.name.value,
-            event.target.surname.value,
-            event.target.position.value,
-            event.target.is_active.value
-        );
+        let name=event.target.name.value;
+        let surname=event.target.surname.value;
+        let email=event.target.email.value;
+        let phone=event.target.phone.value;
+        let pass=event.target.password.value;
+        let position=event.target.position.value;
+
+        if(emails.includes(email)){
+            alert("Podany email jest już w użyciu")
+        }else{
+            addUser(name,surname,pass,email,phone,position);
+            console.log(emails)
+        }
+
     };
 
-    const resetPassword = (event) => {
-        event.preventDefault();
-
-        resetPass();
-    };
-
-    async function updateUsers(name, surname, position, is_active) {
+    async function addUser(name, surname, password, email, number, position) {
         const requestOptions = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                id: window.location.pathname.substring(21),
                 name: name,
                 surname: surname,
-                position: position,
-                is_active: is_active
+                password: password,
+                email: email,
+                phone: number,
+                position: position
             })
         };
 
-        await fetch("/user", requestOptions)
+        await fetch("/admin/userAdd", requestOptions)
             .then(res => {
                 if(res.ok){
                     return res.json()
@@ -60,8 +103,9 @@ function UserEditForm(props) {
                     //obsługa błędów przesyłanych z backendu
                     setError(json[0].error);
                 }else{
-                    setUser(json);
-                    alert("Edycja danych przebiegła pomyślnie");
+                    setEmails(json);
+                    alert("Dodano nowego użytkownika")
+                    window.location.reload(true)
                 }
 
             })
@@ -70,46 +114,9 @@ function UserEditForm(props) {
             });
     };
 
-    async function resetPass() {
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: window.location.pathname.substring(21),
-                password: "kwakwa5!"
-            })
-        };
-
-        await fetch("/user", requestOptions)
-            .then(res => {
-                if(res.ok){
-                    return res.json()
-                }else{
-
-                    let message;
-
-                    if(res.statusText=="Internal Server Error"){
-                        message="Nie można połączyć się z serwerem"
-                    }
-
-                    setError(message)
-                }
-            })
-            .then((json) => {
-
-                if(json[0].error!=null){
-                    //obsługa błędów przesyłanych z backendu
-                    setError(json[0].error);
-                }else{
-                    setUser(json);
-                    alert("Edycja danych przebiegła pomyślnie");
-                }
-
-            })
-            .catch((error) => {
-                console.log('Data fetching error.', error);
-            });
-    };
+    useEffect( () => {
+        getEmails();
+    }, []);
 
     return (
         <main className="form_main-content">
@@ -120,30 +127,28 @@ function UserEditForm(props) {
                 <h1 className="form_heading">Edycja danych</h1>
                 <form onSubmit={handleSubmit}>
                     <p>Imię</p>
-                    <input name="name" type="text" placeholder="Imię" defaultValue={user.name}/>
+                    <input name="name" type="text" placeholder="Imię" pattern={"[A-Z]{1}[a-z]*"}/>
                     <p>Nazwisko</p>
-                    <input name="surname" type="text" placeholder="Nazwisko" defaultValue={user.surname}/>
+                    <input name="surname" type="text" placeholder="Nazwisko" pattern={"[A-Z]{1}[a-z]*"}/>
+                    <p>Email</p>
+                    <input name="email" type="email" placeholder="Email"/>
+                    <p>Numer telefonu</p>
+                    <input name="phone" type="text" placeholder="Numer telefonu" pattern={"[0-9]{9}"}/>
+                    <p>Hasło</p>
+                    <input name="password" type="text" placeholder="Hasło" pattern={"(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{6,20}"}/>
                     <p>Pozycja</p>
-                    <select name="position" defaultValue={user.position}>
+                    <select name="position" defaultValue={"pracownik"}>
                         <option value="pracownik">Pracownik</option>
                         <option value="kierownik">Kierownik</option>
                         <option value="administrator">Administrator</option>
                     </select>
-                    <p>Czy aktywny</p>
-                    <select name="is_active" defaultValue={user.is_active}>
-                        <option value={1}>Aktywne</option>
-                        <option value={0}>Nieaktywne</option>
-                    </select>
                     <div className="form_button_container">
-                        <button type="submit" className="form_button">Zatwierdź</button>
+                        <button type="submit" className="form_button">Dodaj</button>
                     </div>
                 </form>
-                <div className="form_button_container">
-                    <button className="form_button" onClick={resetPassword}>Resetuj hasło</button>
-                </div>
             </div>
         </main>
     );
 }
 
-export default UserEditForm;
+export default UserAddForm;

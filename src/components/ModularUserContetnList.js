@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
-function ModularContetnList(props){
+function ModularUserContetnList(props){
 
     return (
         <div className="content-list">
@@ -10,19 +10,19 @@ function ModularContetnList(props){
                     <Link to={`/admin/userEdit/user/${item.user_id}`} className="item-link">{item.user_id}</Link>
                     <div className="item-fields">
                         <div key="name" className="field">
-                            <strong>Name:</strong> {item.name}
+                            <strong>Imie:</strong> {item.name}
                         </div>
                         <div key="surname" className="field">
-                            <strong>Surname:</strong> {item.surname}
+                            <strong>Nazwisko:</strong> {item.surname}
                         </div>
                         <div key="email" className="field">
                             <strong>Email:</strong> {item.email}
                         </div>
                         <div key="position" className="field">
-                            <strong>Position:</strong> {item.position}
+                            <strong>Stanowisko:</strong> {item.position}
                         </div>
                         <div key="is_active" className="field">
-                            <strong>Account active:</strong> {item.is_active == 1 ? "YES" : "NO"}
+                            <strong>Konto aktywne:</strong> {item.is_active == 1 ? "TAK" : "NIE"}
                         </div>
                     </div>
                 </div>
@@ -33,4 +33,4 @@ function ModularContetnList(props){
 
 }
 
-export default ModularContetnList;
+export default ModularUserContetnList;

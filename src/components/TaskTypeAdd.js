@@ -1,20 +1,21 @@
 import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import Background from "./Background";
 import Header from "./Header";
 import ModularUserContetnList from "./ModularUserContetnList";
-import UserEditSidebar from "./UserEditSidebar";
-import {useNavigate} from "react-router-dom";
+import ModularTaskTypeContetnList from "./ModularTaskTypeContentList";
+import TaskTypeAddSidebar from "./TaskTypeAddSidebar";
 
-function UserEditSelect(){
+function TaskTypeAdd(){
 
     const navigate=useNavigate();
 
-    const [users, setUsers] = useState(null);
-    const [error, setError] = useState(null)
+    const [taskTypes, setTaskTypes] = useState(null);
+    const [error, setError] = useState(null);
 
-    async function getUsers(){
+    async function getTaskTypes(){
 
-        await fetch("/users")
+        await fetch("/taskTypes")
             .then(res => {
 
                 if(res.ok){
@@ -37,7 +38,7 @@ function UserEditSelect(){
                     //obsługa błędów przesyłanych z backendu
                     setError(json[0].error);
                 }else{
-                    setUsers(json);
+                    setTaskTypes(json);
                 }
 
             })
@@ -47,7 +48,7 @@ function UserEditSelect(){
             });
     };
 
-    async function getFilteredUsers(query=null){
+    async function getFilteredTaskTypes(query=null){
 
         const requestOptions = {
             method: 'POST',
@@ -55,7 +56,7 @@ function UserEditSelect(){
             body: JSON.stringify({ query: query })
         };
 
-        await fetch("/users", requestOptions)
+        await fetch("/taskTypes", requestOptions)
             .then(res => {
 
                 if(res.ok){
@@ -77,7 +78,46 @@ function UserEditSelect(){
                     //obsługa błędów przesyłanych z backendu
                     setError(json[0].error);
                 }else{
-                    setUsers(json);
+                    setTaskTypes(json);
+                }
+
+            })
+            .catch((error)=>{
+                console.log('Data fetching error.',error)
+            });
+    };
+
+    async function addTaskType(query){
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ newType: query })
+        };
+
+        await fetch("/taskTypes", requestOptions)
+            .then(res => {
+
+                if(res.ok){
+                    return res.json()
+                }else{
+
+                    let message;
+
+                    if(res.statusText=="Internal Server Error"){
+                        message="Nie można połączyć się z serwerem"
+                    }
+
+                    setError(message)
+                }
+            })
+            .then((json) => {
+
+                if(json[0].error!=null){
+                    //obsługa błędów przesyłanych z backendu
+                    setError(json[0].error);
+                }else{
+                    setTaskTypes(json);
                 }
 
             })
@@ -87,9 +127,8 @@ function UserEditSelect(){
     };
 
     useEffect( () => {
-        getUsers();
+        getTaskTypes();
     }, []);
-
 
     return (
 
@@ -99,11 +138,10 @@ function UserEditSelect(){
             {error? navigate('/error', {state:{error: error}}, {replace:true}): null}
             <Background />
             <Header back={`/admin`}/>
-            <UserEditSidebar  getFilteredUsers={getFilteredUsers}/>
-            { users ? <ModularUserContetnList users={users}/> : null }
+            <TaskTypeAddSidebar getFilteredTypes={getFilteredTaskTypes} types={taskTypes} addType={addTaskType}/>
+            { taskTypes ? <ModularTaskTypeContetnList taskTypes={taskTypes}/> : null }
         </div>
     )
-
 }
 
-export default UserEditSelect;
+export default TaskTypeAdd;

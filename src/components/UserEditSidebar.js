@@ -22,7 +22,6 @@ function UserEditSidebar(props){
         if(name!="" && validName.test(name)){
             query+=" name like ('%"+name+"%')";
             isChanged=1;
-            console.log(query)
         }
 
         if(surname!="" && validName.test(surname)){
@@ -78,7 +77,7 @@ function UserEditSidebar(props){
 
     return (
         <div className="sidebar">
-            <h3>Input Form</h3>
+            <h3>Filtrowanie użytkowników</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Imie:</label>
@@ -106,11 +105,11 @@ function UserEditSidebar(props){
                     <select name="is_active" defaultValue={2}>
                         <option value={2}>Oba</option>
                         <option value={1}>Aktywny</option>
-                        <option value={0}>Nie aktywny</option>
+                        <option value={0}>Nie aktywny</option>y
                     </select>
                 </div>
                 <div className="form_button_container">
-                    <button type="submit" className="form_button">Search</button>
+                    <button type="submit" className="form_button">Szukaj</button>
                 </div>
             </form>
         </div>

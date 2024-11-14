@@ -35,11 +35,12 @@ function UserEdit(){
                 }
             })
             .then((json) => {
-
-                if(json[0].error!=null){
+                if(json[0]==undefined){
+                    setError("Użytkownik o danym id nie istnieje")
+                }else if(json[0].error!=null){
                     //obsługa błędów przesyłanych z backendu
                     setError(json[0].error);
-                }else{
+                }else {
                     setUser(json[0]);
                 }
 
@@ -60,7 +61,6 @@ function UserEdit(){
             {error? navigate('/error', {state:{error: error}}, {replace:true}): null}
             <Background />
             <Header back={`/admin/userEdit`}/>
-            { user ? console.log(user) : null }
             { user ? <UserEditForm user={user} /> : null }
         </div>
     )
