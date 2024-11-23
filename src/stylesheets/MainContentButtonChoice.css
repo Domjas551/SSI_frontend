@@ -29,10 +29,10 @@
 
 .button-container {
     display: grid;                    /* Use CSS Grid */
-    grid-template-columns: repeat(2, 1fr); /* Create two equal columns */
-    gap: 1rem;                       /* Space between buttons */
-    align-items: center;             /* Center buttons vertically */
-    justify-items: center;           /* Center buttons horizontally */
+    grid-template-columns: 1fr;       /* Create a single column */
+    gap: 1rem;                        /* Space between buttons */
+    align-items: center;              /* Center buttons vertically */
+    justify-items: center;            /* Center buttons horizontally */
 }
 
 .button-container button {

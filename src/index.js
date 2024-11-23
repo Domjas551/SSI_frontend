@@ -9,6 +9,8 @@ import UserEdit from "./components/UserEdit";
 import TaskTypeAdd from "./components/TaskTypeAdd";
 import UserAdd from "./components/UserAdd";
 import Login from "./components/Login";
+import ManagerMain from "./components/Manager-Main"
+import TaskAdd from "./components/TaskAdd"
 
 //element do ustalania ścieżek stron
 const router=createBrowserRouter([
@@ -23,6 +25,8 @@ const router=createBrowserRouter([
     {path: 'admin/taskTypeAdd', element: <TaskTypeAdd />},
     {path: `admin/userEdit/user/*`, element: <UserEdit />},
     {path: `login`, element: <Login />},
+    {path: 'manager', element: < ManagerMain/>},
+    {path: 'manager/taskAdd', element: <TaskAdd />},
     {path: 'error', element: <ErrorPage />}
 ]);
 

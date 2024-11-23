@@ -18,7 +18,7 @@ function Header(props) {
         <header className="header">
             <a href="/" className="home-link">MagWork</a>
             {props.back !== undefined ? <Link to={props.back} className="back-link">Powrót</Link> : null}
-            <button onClick={handleClick}>Wyloguj</button>
+            <button onClick={handleClick} className="header-button">Wyloguj</button>
         </header>
     );
 }

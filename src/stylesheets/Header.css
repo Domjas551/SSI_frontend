@@ -20,7 +20,6 @@
     color: #61dafb; /* Light blue color on hover */
 }
 
-.login-link,
 .back-link { /* Add a new class for the back link */
     font-size: 1.25rem; /* Larger font size */
     text-decoration: none;
@@ -29,7 +28,21 @@
     margin-right: 75px;
 }
 
-.login-link:hover,
 .back-link:hover { /* Apply the same hover effect */
+    color: #61dafb; /* Light blue color on hover */
+}
+
+/* New CSS for the header button */
+.header-button {
+    font-size: 1.25rem; /* Match font size with links */
+    background: none; /* Remove default button styling */
+    border: none; /* Remove border */
+    color: white; /* Match color with links */
+    cursor: pointer; /* Indicate clickable button */
+    transition: color 0.3s ease; /* Smooth transition for hover */
+    margin-right: 75px; /* Match spacing with links */
+}
+
+.header-button:hover {
     color: #61dafb; /* Light blue color on hover */
 }

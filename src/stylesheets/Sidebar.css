@@ -40,7 +40,8 @@ label {
 }
 
 input[type="text"],
-input[type="email"]{
+input[type="email"],
+input[type="password"]{
     width: 80%; /* Full width inputs */
     padding: 0.5rem; /* Padding inside inputs */
     border: 1px solid #011f3d; /* Border style */
@@ -62,6 +63,7 @@ select
     /* Change border color on focus */
 input[type="text"]:focus,
 input[type="email"]:focus,
+input[type="password"]:focus,
 select:focus {
     border-color: #007bff; /* Change border color on focus */
     outline: none; /* Remove default outline */
@@ -77,3 +79,25 @@ input[type="checkbox"] {
     align-items: center; /* Center the checkbox vertically with the label */
     cursor: pointer; /* Pointer cursor for checkbox */
 }
+
+.form_description {
+    height: 100px; /* Increase the height for a larger input area */
+    padding: 0.75rem; /* Add more padding for a spacious feel */
+    border: 1px solid #011f3d; /* Match the border style */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Keep the font size consistent */
+    resize: none; /* Prevent resizing if you want a fixed size */
+    transition: border-color 0.3s ease; /* Smooth transition for focus effect */
+}
+
+/* Change border color on focus */
+.form_description:focus {
+    border-color: #007bff; /* Highlight on focus */
+    outline: none; /* Remove default outline */
+}
+
+textarea.form_description {
+    resize: vertical; /* Allow vertical resizing if desired */
+}
+
+

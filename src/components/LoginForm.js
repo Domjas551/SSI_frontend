@@ -50,6 +50,7 @@ function LoginForm(){
                     }else if(json[0].uprawnienia==2){
                         //zmienna sesyjna przechowująca uprawnienia użytkownika
                         sessionStorage.setItem("uprawnienia",2);
+                        navigate('/manager', {replace:false})
                     }else if(json[0].uprawnienia==1){
                         //zmienna sesyjna przechowująca uprawnienia użytkownika
                         sessionStorage.setItem("uprawnienia",1);
