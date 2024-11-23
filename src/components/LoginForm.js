@@ -40,13 +40,18 @@ function LoginForm(){
                     setError(json[0].error);
                 }else{
                     //todo uzupełnić przenoszenia na strone
+                    //json[0].email - email zalogowanego konta do wykorzystania
+
                     if(json[0].uprawnienia==-1){
                         setErrorMessage("Podano niepoprawne dane");
                     }else if(json[0].uprawnienia==3){
+                        //zmienna sesyjna przechowująca uprawnienia użytkownika
                         sessionStorage.setItem("uprawnienia",3);
                     }else if(json[0].uprawnienia==2){
+                        //zmienna sesyjna przechowująca uprawnienia użytkownika
                         sessionStorage.setItem("uprawnienia",2);
                     }else if(json[0].uprawnienia==1){
+                        //zmienna sesyjna przechowująca uprawnienia użytkownika
                         sessionStorage.setItem("uprawnienia",1);
                         navigate('/admin', {replace:false})
                     }
