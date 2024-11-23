@@ -2,8 +2,11 @@ import React, {useEffect, useState} from "react";
 import Background from "./Background";
 import Header from "./Header";
 import ModularContentButton from "./ModularContentButton";
+import {useNavigate} from "react-router-dom";
 
-function AdminMain(props){
+function AdminMain(){
+
+    const navigate=useNavigate();
 
     const [options, setOptions]=useState([
         {
@@ -22,6 +25,12 @@ function AdminMain(props){
             link: "/admin/userEdit"
         }
     ])
+
+    useEffect(() => {
+        if(sessionStorage.getItem("uprawnienia")!=1){
+            navigate('/', {replace:false})
+        }
+    }, []);
 
     return(
         <div className="App">

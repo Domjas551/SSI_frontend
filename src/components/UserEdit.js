@@ -51,6 +51,11 @@ function UserEdit(){
     };
 
     useEffect(() => {
+
+        if(sessionStorage.getItem("uprawnienia")!=1){
+            navigate('/', {replace:false})
+        }
+
         getUser();
     }, []);
 

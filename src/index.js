@@ -8,6 +8,7 @@ import UserEditSelect from "./components/UserEditSelect";
 import UserEdit from "./components/UserEdit";
 import TaskTypeAdd from "./components/TaskTypeAdd";
 import UserAdd from "./components/UserAdd";
+import Login from "./components/Login";
 
 //element do ustalania ścieżek stron
 const router=createBrowserRouter([
@@ -21,6 +22,7 @@ const router=createBrowserRouter([
     {path: 'admin/userEdit', element: <UserEditSelect />},
     {path: 'admin/taskTypeAdd', element: <TaskTypeAdd />},
     {path: `admin/userEdit/user/*`, element: <UserEdit />},
+    {path: `login`, element: <Login />},
     {path: 'error', element: <ErrorPage />}
 ]);
 

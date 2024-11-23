@@ -87,6 +87,11 @@ function UserEditSelect(){
     };
 
     useEffect( () => {
+
+        if(sessionStorage.getItem("uprawnienia")!=1){
+            navigate('/', {replace:false})
+        }
+
         getUsers();
     }, []);
 

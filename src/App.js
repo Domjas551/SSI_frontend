@@ -9,6 +9,7 @@ import Sidebar from './components/Sidebar';
 import ContentList from './components/ContentList'; // Import the ContentList component
 import UserEditSelect from './components/UserEditSelect';
 import UserEditSidebar from './components/UserEditSidebar';
+import Login from "./components/Login";
 
 function App() {
     const getTypes = () => {
@@ -18,7 +19,7 @@ function App() {
     }
 
 
-    //Przykłądowa komunikacja z backendem na projekt
+    //Przykładowa komunikacja z backendem na projekt
     const sendData = () => {
         const requestOptions = {
             method: 'POST',
@@ -34,14 +35,22 @@ function App() {
         //sendData();
     }, []);
 
-    //Strona edycji użytkownika
+    //Strona logowania
+    return (
+        <div className="App">
+                <Login />
+        </div>
+    );
+
+/*
+
+//Strona edycji użytkownika
     return (
         <div className="App">
                 <UserEditSelect />
         </div>
     );
 
-/*
     //Strona z przyciskami
     return (
         <div className="App">

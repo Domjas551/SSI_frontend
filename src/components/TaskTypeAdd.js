@@ -127,6 +127,11 @@ function TaskTypeAdd(){
     };
 
     useEffect( () => {
+
+        if(sessionStorage.getItem("uprawnienia")!=1){
+            navigate('/', {replace:false})
+        }
+
         getTaskTypes();
     }, []);
 
