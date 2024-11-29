@@ -39,6 +39,10 @@ function TaskAddForm() {
         const typeId = event.target.typeId.value;
         const description = event.target.description.value;
 
+        if (!deadline) {
+            alert("Proszę wprowadzić poprawną datę.");
+            return;
+        }
         // Format the selected deadline date
         const deadlineDate = new Date(deadline);
         const deadlineFormatted = `${String(deadlineDate.getHours()).padStart(2, "0")}:${String(
@@ -111,8 +115,9 @@ function TaskAddForm() {
                         selected={deadline}
                         onChange={(date) => setDeadline(date)}
                         showTimeSelect
-                        timeFormat="HH:mm" // 24-hour format
+                        timeFormat="HH:mm" // 24-hour fonpmrmat
                         dateFormat="yyyy-MM-dd HH:mm" // 24-hour date and time format
+                        minDate={new Date()} // Prevent past dates
                     />
                     <p>Opis zadania</p>
                     <textarea name="description" placeholder="Opis zadania" className="form_description"/>

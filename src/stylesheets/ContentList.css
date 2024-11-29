@@ -18,8 +18,9 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: row; /* Arrange content in a row */
-    align-items: center;  /* Center align items vertically */
-    gap: 1rem;            /* Space between elements */
+    align-items: center; /* Center align items vertically */
+    gap: 1rem; /* Space between elements */
+    width: 100%; /* Ensure full width for the list item */
 }
 
 .item-link {
@@ -28,7 +29,8 @@
     font-weight: bold;
     text-decoration: none;
     transition: color 0.3s ease;
-    white-space: nowrap;  /* Prevent the link text from wrapping */
+    white-space: nowrap; /* Prevent the link text from wrapping */
+    flex-grow: 0; /* Keep the link at its natural width */
 }
 
 .item-link:hover {
@@ -37,13 +39,16 @@
 
 .item-fields {
     display: flex;
-    flex-direction: row;  /* Horizontal alignment */
-    gap: 1rem;            /* Space between fields */
+    flex-direction: row; /* Horizontal alignment */
+    gap: 1rem; /* Space between fields */
+    flex-grow: 1; /* Allow fields to take up remaining space */
+    justify-content: space-between; /* Spread fields across the width */
 }
 
 .field {
     color: #011f3d;
     font-size: 1.05rem;
+    flex: 1; /* Ensure fields distribute evenly */
 }
 
 .field strong {

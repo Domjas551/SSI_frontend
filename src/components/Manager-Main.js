@@ -14,13 +14,8 @@ function ManagerMain(props){
         },
         {
             id: 2,
-            name: "Modyfikuj zadanie",
-            link: "/manager/TaskEdit"
-        },
-        {
-            id: 3,
-            name: "Przydziel zadanie",
-            link: "/manager/TaskAssign"
+            name: "Modyfikuj zadania",
+            link: "/manager/TaskEditSelect"
         }
     ])
 
