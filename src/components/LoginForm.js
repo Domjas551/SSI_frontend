@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {wait} from "@testing-library/user-event/dist/utils";
 
 function LoginForm(){
 
@@ -72,7 +73,6 @@ function LoginForm(){
 
         login(email,pass);
 
-
     };
 
 
@@ -86,9 +86,9 @@ function LoginForm(){
                 {errorMessage?<p>{errorMessage}</p>:null}
                 <form onSubmit={handleSubmit}>
                     <p>Email</p>
-                    <input name="email" type="email" placeholder="Email"/>
+                    <input name="email" type="email" placeholder="Email" required/>
                     <p>Hasło</p>
-                    <input name="password" type="password" placeholder="Hasło" pattern={"(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{6,20}"}/>
+                    <input name="password" required type="password" placeholder="Hasło" pattern={"(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{6,20}"}/>
                     <div className="form_button_container">
                         <button type="submit" className="form_button">Zaloguj</button>
                     </div>
