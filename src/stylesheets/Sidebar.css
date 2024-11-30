@@ -4,7 +4,7 @@
     position: fixed; /* Fix the sidebar to the left of the screen */
     top: 55%; /* Align the top to the center of the viewport */
     left: 0; /* Align to the left */
-    width: 15vw; /* Set the width of the sidebar */
+    width: 13vw; /* Set the width of the sidebar */
     height: auto; /* Set a height for the sidebar */
     transform: translateY(-50%); /* Move up half of the height of the sidebar */
     background-color: rgba(255, 255, 255, 0.8); /* Slightly more opaque background for better readability */

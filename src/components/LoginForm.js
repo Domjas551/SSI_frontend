@@ -81,7 +81,7 @@ function LoginForm(){
             {//Blok do przenoszenia na strone z błędami
             }
             {error? navigate('/error', {state:{error: error}}, {replace:true}): null}
-            <div className="form_content-container">
+            <div className="form_content-container-login">
                 <h1 className="form_heading">Logowanie</h1>
                 {errorMessage?<p>{errorMessage}</p>:null}
                 <form onSubmit={handleSubmit}>
