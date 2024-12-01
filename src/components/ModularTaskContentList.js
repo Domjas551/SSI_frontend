@@ -1,7 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 
-function ModularTaskContentList(props){
+function ModularTaskContentList(props) {
+    // Check if there are no tasks
+    if (!props.tasks || props.tasks.length === 0) {
+        return null; // Render nothing if tasks array is empty or undefined
+    }
 
     return (
         <div className="content-list">
@@ -26,8 +30,6 @@ function ModularTaskContentList(props){
             ))}
         </div>
     );
-
-
 }
 
 export default ModularTaskContentList;

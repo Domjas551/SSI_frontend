@@ -39,44 +39,41 @@ function TaskEditSelect(){
             });
     };
 
-    async function getFilteredTasks(query=null){
-
+    async function getFilteredTasks(query = null) {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query: query })
+            body: JSON.stringify({ query: query }),
         };
 
-        await fetch("/tasks", requestOptions)
-            .then(res => {
+        try {
+            const res = await fetch("/tasks", requestOptions);
 
-                if(res.ok){
-                    return res.json()
-                }else{
+            if (!res.ok) {
+                let message = res.statusText === "Internal Server Error"
+                    ? "Nie można połączyć się z serwerem"
+                    : "Wystąpił nieoczekiwany błąd";
+                setError(message);
+                return;
+            }
 
-                    let message;
+            const json = await res.json();
 
-                    if(res.statusText=="Internal Server Error"){
-                        message="Nie można połączyć się z serwerem"
-                    }
-
-                    setError(message)
-                }
-            })
-            .then((json) => {
-
-                if(json[0].error!=null){
-                    //obsługa błędów przesyłanych z backendu
+            if (Array.isArray(json) && json.length > 0) {
+                if (json[0]?.error) {
+                    // Handle backend-specific error messages
                     setError(json[0].error);
-                }else{
-                    setTasks(json);
+                } else {
+                    setTasks(json); // Set tasks if valid data is received
                 }
-
-            })
-            .catch((error)=>{
-                console.log('Data fetching error.',error)
-            });
-    };
+            } else {
+                setTasks([]); // No tasks returned; clear the list
+            }
+        } catch (error) {
+            console.log('Data fetching error.', error);
+            setError("Błąd pobierania danych");
+        }
+    }
 
     useEffect( () => {
 
