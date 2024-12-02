@@ -73,11 +73,16 @@ function UserEditSelect(){
             })
             .then((json) => {
 
-                if(json[0].error!=null){
-                    //obsługa błędów przesyłanych z backendu
-                    setError(json[0].error);
+                if (Array.isArray(json) && json.length > 0) {
+
+                    if(json[0].error!=null){
+                        //obsługa błędów przesyłanych z backendu
+                        setError(json[0].error);
+                    }else{
+                        setUsers(json);
+                    }
                 }else{
-                    setUsers(json);
+                    setUsers([]);
                 }
 
             })
